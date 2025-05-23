@@ -1,0 +1,770 @@
+/* ------------------- */
+/* Custom Properties   */
+/* ------------------- */
+:root {
+    /* New Color Palette Based on User Input */
+    --primary-color: #5AB9EA;          /* Medium Blue - main interactive elements, nav links */
+    --primary-color-dark: #5680E9;     /* Darker Blue - hover states, important highlights, footer, navbar */
+    --accent-color: #8860D0;           /* Purple - primary call-to-action buttons */
+    --accent-color-hover: #7A52C1;     /* Darker Purple - for button hover */
+    --light-accent-color: #84CEEB;     /* Light Blue - subtle backgrounds or accents */
+    --neutral-light-color: #C1C8E4;    /* Light Lavender/Grayish Blue - borders, very light UI elements */
+    
+    --body-bg-color: #F4F7FC;          /* Very Light Blueish Gray - for page background */
+    --card-bg-color: #FFFFFF;          /* White - for cards, content areas */
+    --header-bg: #FFFFFF;              /* White - for header background */
+    
+    --text-color: #334155;             /* Slate 700 - main text */
+    --heading-color: #1E293B;          /* Slate 800 - main headings */
+    --light-text-color: #FFFFFF;       /* White - for text on dark backgrounds */
+    
+    --border-color: #DDE2F1;           /* Light Grayish Blue - for borders */
+    --footer-bg-color: var(--primary-color-dark); /* Dark Blue - for footer */
+    --navbar-bg-color: var(--primary-color-dark); /* Dark Blue - for navbar */
+
+    --shadow-color-rgb: 86, 128, 233; /* RGB of --primary-color-dark for box-shadows */
+    --shadow-light-rgb: 136, 96, 208; /* RGB of --accent-color for box-shadows */
+
+    --font-sans: 'Arial', sans-serif; /* Can be updated to a more modern font if desired */
+    --border-radius-sm: 0.375rem; /* 6px */
+    --border-radius-md: 0.5rem;   /* 8px */
+    --border-radius-lg: 0.75rem;  /* 12px */
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--body-bg-color); 
+    transition: background-color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color-dark);
+}
+
+/* ------------------- */
+/* Utility Classes     */
+/* ------------------- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 22px; /* Slightly more padding */
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color-hover);
+    color: var(--light-text-color);
+    border-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--shadow-light-rgb), 0.3);
+}
+
+.sr-only { 
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------- */
+/* Header              */
+/* ------------------- */
+.site-header {
+    background-color: var(--header-bg);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative; 
+    box-shadow: 0 2px 4px rgba(var(--shadow-color-rgb), 0.05);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.club-identity {
+    display: flex;
+    align-items: center;
+}
+
+.club-logo {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    border-radius: var(--border-radius-sm);
+}
+
+.club-name h1 {
+    font-size: 1.5em;
+    color: var(--heading-color); /* Changed from primary-color */
+    margin-bottom: 0;
+}
+
+.club-name p {
+    font-size: 0.9em;
+    color: var(--text-color); /* Changed from #666 */
+}
+
+.partner-logos {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;   
+}
+
+.partner-logo {
+    width: 40px; 
+    height: auto;
+    margin-bottom: 5px;   
+    border: 1px solid var(--border-color); 
+    padding: 3px;
+    border-radius: var(--border-radius-sm);
+}
+.partner-logo:last-child {
+    margin-bottom: 0; 
+}
+
+/* ------------------- */
+/* Navigation Bar      */
+/* ------------------- */
+.navbar {
+    background-color: var(--navbar-bg-color); /* UPDATED */
+    padding: 12px 0; /* Slightly more padding */
+    box-shadow: 0 2px 5px rgba(var(--shadow-color-rgb), 0.1);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: var(--light-text-color);
+    font-weight: bold;
+    padding: 8px 0;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    border-bottom: 2px solid transparent; /* For hover effect */
+}
+
+.nav-links a:hover,
+.nav-links a.active { 
+    color: var(--light-accent-color); 
+    border-bottom: 2px solid var(--light-accent-color);
+}
+
+.nav-links .login-btn {
+    background-color: var(--light-text-color);
+    color: var(--navbar-bg-color); /* Text color matches navbar bg for contrast */
+    padding: 8px 18px;
+    border-radius: var(--border-radius-md);
+    border: 1px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+.nav-links .login-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    border-bottom: none; /* Remove underline for buttons */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(var(--shadow-light-rgb), 0.2);
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    margin-left: auto; 
+}
+
+.search-item input[type="search"] {
+    padding: 9px 12px;
+    border: 1px solid var(--neutral-light-color);
+    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+    border-right: none;
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+.search-item input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.search-item .search-btn {
+    padding: 9px 15px;
+    background-color: var(--primary-color); /* Using medium blue */
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.search-item .search-btn:hover {
+    background-color: var(--primary-color-dark); /* Darker blue on hover */
+}
+
+.mobile-nav-toggle {
+    display: none; 
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0.5em;
+    /* SVG icons for hamburger/close remain the same but colors can be adjusted if needed */
+}
+
+/* ------------------- */
+/* Hero Section        */
+/* ------------------- */
+.hero-section {
+    background: url('../images/background2.jpg') no-repeat center center/cover; 
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 120px 20px; /* Increased padding */
+    position: relative; 
+}
+.hero-section::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(30, 41, 59, 0.6); /* Darker overlay using Slate-like color */
+}
+
+.hero-content {
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Removed .hero-main-text background, styling h2 and p directly for cleaner look */
+.hero-section h2 { 
+    font-size: 3em; /* Slightly larger */
+    margin-bottom: 15px; 
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero-section p { 
+    font-size: 1.3em; /* Slightly larger */
+    margin-bottom: 30px; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* ---------------------------- */
+/* Section: 5 Lý Do Tham Gia    */
+/* ---------------------------- */
+.reasons-section {
+    padding: 80px 0; /* Increased padding */
+    background-color: var(--card-bg-color); 
+    text-align: center;
+}
+
+.section-title { 
+    font-size: 2.4em; /* Slightly larger */
+    color: var(--heading-color); /* UPDATED */
+    margin-bottom: 60px; /* Increased margin */
+    font-weight: 700;
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More responsive grid */
+    gap: 35px; /* Increased gap */
+}
+
+.reason-item {
+    background-color: var(--body-bg-color); /* Lighter background for items */
+    padding: 35px 30px; /* Increased padding */
+    border-radius: var(--border-radius-lg); /* More rounded */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(var(--shadow-color-rgb), 0.07); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.reason-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(var(--shadow-color-rgb), 0.12); 
+}
+
+.reason-icon-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    background-color: rgba(var(--shadow-color-rgb), 0.1); /* Using RGB variable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px; 
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+.reason-item:hover .reason-icon-wrapper {
+    background-color: rgba(var(--shadow-color-rgb), 0.15);
+}
+
+.reason-icon-wrapper .image-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.reason-icon {
+    max-width: 65%; /* Adjusted for better padding within circle */
+    max-height: 65%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.reason-item:hover .reason-icon {
+    transform: scale(1.05);
+}
+
+
+.reason-title {
+    font-size: 1.35em; 
+    color: var(--heading-color); 
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.reason-description {
+    font-size: 0.95em; 
+    color: var(--text-color); 
+    line-height: 1.7;
+    flex-grow: 1; 
+}
+
+/* Responsive adjustments for reason-icon-wrapper and icon in @media queries remain as before,
+   as they rely on percentage of parent which is already handled */
+
+/* ------------------- */
+/* Main Content Area   */
+/* ------------------- */
+.main-area {
+    padding: 50px 0; /* Increased padding */
+}
+
+.page-title-section {
+    text-align: center;
+    margin-bottom: 40px; /* Increased margin */
+    padding: 15px; /* Increased padding */
+    background-color: var(--light-accent-color); /* Using light blue */
+    border-left: 5px solid var(--primary-color);
+    border-radius: var(--border-radius-md);
+}
+
+.page-title-section h3 {
+    font-size: 2em; /* Increased size */
+    color: var(--heading-color); /* Changed from primary-color */
+}
+
+.content-layout {
+    display: flex;
+    gap: 35px; /* Increased gap */
+}
+
+.main-content {
+    flex: 2; 
+    background-color: var(--card-bg-color);
+    padding: 30px; /* Increased padding */
+    border-radius: var(--border-radius-lg); /* More rounded */
+    box-shadow: 0 4px 10px rgba(var(--shadow-color-rgb), 0.06);
+}
+
+.main-content h4 {
+    font-size: 1.5em; /* Increased size */
+    color: var(--heading-color); /* Changed from primary-color */
+    margin-top: 25px; /* Increased margin */
+    margin-bottom: 15px; /* Increased margin */
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px; /* Increased padding */
+}
+.main-content h4:first-child {
+    margin-top: 0;
+}
+
+.main-content p, .main-content ul {
+    margin-bottom: 18px; /* Increased margin */
+}
+.main-content ul {
+    padding-left: 25px; /* Increased padding */
+    list-style: disc;
+}
+.main-content ul li::marker {
+    color: var(--primary-color);
+}
+
+
+.gallery {
+    display: grid; /* Changed to grid for better spacing */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px; /* Increased gap */
+}
+.gallery .image-link-wrapper {
+    display: block;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(var(--shadow-color-rgb), 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery .image-link-wrapper:hover {
+    transform: scale(1.03) translateY(-3px);
+    box-shadow: 0 6px 12px rgba(var(--shadow-color-rgb), 0.15);
+}
+.gallery img {
+    /* width: calc(33.333% - 10px); REMOVED - handled by grid */
+    width: 100%; /* Fill the grid cell */
+    height: auto;
+    border: none; /* Removed border, shadow on wrapper is enough */
+    /* border-radius: 3px; REMOVED - handled by wrapper */
+    display: block;
+}
+
+.sidebar-image {
+    flex: 1; 
+    background-color: var(--card-bg-color);
+    padding: 25px; /* Increased padding */
+    border-radius: var(--border-radius-lg); /* More rounded */
+    box-shadow: 0 4px 10px rgba(var(--shadow-color-rgb), 0.06);
+    text-align: center;
+}
+
+.sidebar-image h4 {
+    font-size: 1.3em; /* Increased size */
+    color: var(--heading-color); /* Changed from primary-color */
+    margin-bottom: 20px; /* Increased margin */
+}
+
+.sidebar-image .image-link-wrapper {
+    display: block;
+    margin-bottom: 15px;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(var(--shadow-color-rgb), 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sidebar-image .image-link-wrapper:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(var(--shadow-color-rgb), 0.15);
+}
+.sidebar-image img {
+    margin-bottom: 0; /* Removed, as wrapper handles spacing */
+    border: none; /* Removed border */
+    /* border-radius: 3px; REMOVED - handled by wrapper */
+    display: block;
+}
+
+/* ------------------- */
+/* Contact Form        */
+/* ------------------- */
+.contact-form-section {
+    background-color: var(--light-accent-color); /* Using light blue */
+    padding: 70px 0; /* Increased padding */
+    text-align: center;
+}
+
+.contact-form-section h3 {
+    font-size: 2.2em; /* Increased size */
+    color: var(--heading-color); /* Changed from primary-color */
+    margin-bottom: 40px; /* Increased margin */
+}
+
+#contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--card-bg-color);
+    padding: 35px 40px; /* Increased padding */
+    border-radius: var(--border-radius-lg); /* More rounded */
+    box-shadow: 0 6px 20px rgba(var(--shadow-color-rgb), 0.1);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Increased margin */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Increased margin */
+    font-weight: 600; /* Bolder label */
+    color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px; /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: 1em;
+    background-color: var(--body-bg-color); /* Light bg for inputs */
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--shadow-color-rgb), 0.2);
+}
+
+
+.form-group textarea {
+    resize: vertical; 
+    min-height: 120px; /* Increased min-height */
+}
+
+#contactForm button[type="submit"] { /* Uses .btn and .btn-primary styles now */
+    display: block;
+    width: 100%;
+    padding-top: 14px; /* Match input padding */
+    padding-bottom: 14px; /* Match input padding */
+    font-size: 1.1em;
+}
+
+/* ------------------- */
+/* Footer              */
+/* ------------------- */
+.site-footer-bottom {
+    background-color: var(--footer-bg-color); /* UPDATED */
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 40px 0; /* Increased padding */
+    font-size: 0.9em;
+}
+
+.site-footer-bottom p {
+    margin-bottom: 8px; /* Increased margin */
+}
+.site-footer-bottom p:last-child {
+    margin-bottom: 0;
+}
+
+/* ------------------- */
+/* Responsive Design   */
+/* ------------------- */
+
+@media (max-width: 992px) { 
+    .content-layout {
+        flex-direction: column;
+    }
+    .main-content, .sidebar-image {
+        flex: none; 
+        width: 100%;
+    }
+    .reasons-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) { 
+    .header-content {
+        flex-wrap: wrap; 
+    }
+    .club-identity {
+        flex-grow: 1; 
+        margin-bottom: 10px; /* Space for mobile layout */
+    }
+    .partner-logos {
+         /* margin-top: 10px; No longer needed with flex-wrap */
+         width: 100%;
+         flex-direction: row; /* Align horizontally on mobile */
+         justify-content: center; /* Center partner logos */
+         gap: 15px; /* Space between logos */
+         align-items: center; 
+    }
+    .partner-logo {
+        margin-bottom: 0;
+    }
+
+    .mobile-nav-toggle {
+        display: block; 
+        position: absolute;
+        top: 20px; /* Adjusted for better alignment */
+        right: 1rem;
+        /* transform: translateY(-50%); No longer needed with absolute top */
+        z-index: 9999; 
+        width: 2rem; 
+        aspect-ratio: 1;
+        /* SVGs with new primary color */
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(90, 185, 234)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .mobile-nav-toggle[aria-expanded="true"] {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(90, 185, 234)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M6 6l18 18M6 24L24 6'/%3e%3c/svg%3e");
+    }
+
+    .nav-links {
+        position: fixed;
+        inset: 0 0 0 25%; /* Slightly wider */
+        flex-direction: column;
+        padding: min(15vh, 8rem) 2em; /* Adjusted padding */
+        gap: 1.5em; /* Increased gap */
+        background: hsla(0, 0%, 100%, 0.95); 
+        backdrop-filter: blur(1.2rem); /* Stronger blur */
+        transform: translateX(100%);
+        transition: transform 400ms ease-in-out; /* Smoother transition */
+        z-index: 999; /* Ensure it's above other content but below toggle */
+    }
+
+    .nav-links[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links a {
+        color: var(--primary-color-dark); /* Darker blue for mobile nav links for better contrast */
+        font-size: 1.1em;
+    }
+    .nav-links a:hover, .nav-links a.active {
+        color: var(--accent-color); /* Purple for hover/active */
+        border-bottom: 2px solid var(--accent-color);
+    }
+
+    .search-item {
+        margin-left: 0;
+        width: 100%;
+        flex-direction: column; 
+        gap: 8px; /* Space between input and button */
+    }
+    .search-item input[type="search"] {
+        width: 100%;
+        border-radius: var(--border-radius-md);
+        margin-bottom: 0; /* Handled by gap */
+        border-right: 1px solid var(--neutral-light-color); /* Ensure right border exists */
+    }
+    .search-item .search-btn {
+        width: 100%;
+        border-radius: var(--border-radius-md);
+    }
+    
+    .hero-section h2 { 
+        font-size: 2.2em; /* Adjusted for mobile */
+    }
+    .hero-section p { 
+        font-size: 1.1em; /* Adjusted for mobile */
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+     .reasons-grid {
+        grid-template-columns: 1fr; /* Stack reasons on smaller mobile */
+        gap: 25px;
+    }
+    .reason-item {
+        padding: 25px 20px;
+    }
+    .reason-title {
+        font-size: 1.25em;
+    }
+    .reason-icon-wrapper { 
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .club-name h1 {
+        font-size: 1.3em;
+    }
+    .club-name p {
+        font-size: 0.85em;
+    }
+    .hero-section {
+        padding: 100px 15px;
+    }
+    .hero-section h2 {
+        font-size: 1.8em;
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller gallery items */
+    }
+    .page-title-section h3 {
+        font-size: 1.6em;
+    }
+    .main-content h4 {
+        font-size: 1.3em;
+    }
+    .contact-form-section h3 {
+        font-size: 1.8em;
+    }
+    #contactForm {
+        padding: 25px 20px;
+    }
+}
